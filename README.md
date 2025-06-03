@@ -1,62 +1,60 @@
 # Video Translator
 
-## Mô tả tổng quan
-Dự án chuyển một video nói Tiếng Việt thành video nói Tiếng Anh, bao gồm:
-- Giữ nguyên hình ảnh gốc (khuôn mặt, biểu cảm).  
-- Nhận dạng và dịch nội dung.
-- Sinh giọng Tiếng Anh với ngữ điệu tương tự gốc.
-- Đồng bộ khẩu hình (lip‑sync) để miệng khớp với audio mới.
+## Overview
+This project converts a video spoken in Vietnamese into a video spoken in English, including:
+- Preserving the original visuals (face, expressions).
+- Transcribing and translating the content.
+- Generating English speech with prosody similar to the original.
+- Synchronizing lip movements (lip-sync) so the mouth matches the new audio.
 
 
-## Các Module
+## Modules
 
-### Module 1: Trích xuất Audio từ Video
+#### 1. Extract Audio from Video
 - **Input:**  
-  - Video gốc (ví dụ `vi_video.mp4`)  
+  - Original video (e.g., `vi_video.mp4`)  
 - **Output:**  
-  - File audio WAV mono 16 kHz (ví dụ `vi_audio.wav`)  
+  - Mono 16 kHz WAV audio file (e.g., `vi_audio.wav`)  
 - **Tool:**  
   - `ffmpeg`
 
-
-### Module 2: Nhận dạng tiếng Việt (ASR)
+#### 2. Vietnamese Speech Recognition (ASR)
 - **Input:**  
-  - File audio Tiếng Việt (`vi_audio.wav`)  
+  - Vietnamese audio file (`vi_audio.wav`)  
 - **Output:**  
-  - Văn bản Tiếng Việt (`vi_text.txt`)  
+  - Vietnamese text (e.g., `vi_text.txt`)  
 - **Model:**  
-  - Whisper ([openai/whisper-large-v3-turbo](https://huggingface.co/openai/whisper-large-v3-turbo)) với `task="transcribe", language="vi"`.
+  - Whisper ([openai/whisper-large-v3-turbo](https://huggingface.co/openai/whisper-large-v3-turbo))
 
-
-### Module 3: Dịch văn bản (Vi → En)
+#### 3. Text Translation (Vi → En)
 - **Input:**  
-  - Văn bản Tiếng Việt (`vi_text.txt`)  
+  - Vietnamese text (`vi_text.txt`)  
 - **Output:**  
-  - Văn bản Tiếng Anh (`en_text.txt`)  
+  - English text (e.g., `en_text.txt`)  
 - **Model:**  
-  - VinAI Translate ([vinai/vinai-translate-vi2en-v2](https://huggingface.co/vinai/vinai-translate-vi2en-v2)).
+  - VinAI Translate ([vinai/vinai-translate-vi2en-v2](https://huggingface.co/vinai/vinai-translate-vi2en-v2))
 
-
-### Module 4: Text‑to‑Speech (Tiếng Anh) với Voice+Prosody Cloning
+#### 4. Text‑to‑Speech (English) with Voice+Prosody Cloning
 - **Input:**  
-  - Văn bản Tiếng Anh (`en_text.txt`)  
-  - File audio gốc Tiếng Việt (`vi_audio.wav`) làm tham chiếu giọng
+  - English text (`en_text.txt`)  
+  - Original Vietnamese audio file (`vi_audio.wav`) as voice reference  
 - **Output:**  
-  - File audio Tiếng Anh WAV (ví dụ `en_audio.wav`)  
+  - English WAV audio file (e.g., `en_audio.wav`)  
 - **Model:**  
-  - Coqui TTS – XTTS v2 ([tts_models/multilingual/multi-dataset/xtts_v2](https://huggingface.co/coqui/XTTS-v2))  
+  - Coqui TTS – XTTS v2 ([tts_models/multilingual/multi-dataset/xtts_v2](https://huggingface.co/coqui/XTTS-v2))
 
-
-### Module 5: Lip‑Sync với LatentSync
+#### 5. Lip‑Sync with LatentSync
 - **Input:**  
-  - Video gốc (`vi_video.mp4`)  
-  - File audio Tiếng Anh sinh ra (`en_audio.wav`)  
+  - Original video (`vi_video.mp4`)  
+  - Generated English audio (`en_audio.wav`)  
 - **Output:**  
-  - Video đầu ra đồng bộ khẩu hình (`en_video.mp4`)  
+  - Lip‑synced output video (`en_video.mp4`)  
 - **Model/Tool:**  
-  - LatentSync (`scripts.inference` + checkpoint `latentsync_unet.pt`)  
+  - [LatentSync](https://github.com/bytedance/LatentSync) (checkpoint `latentsync_unet.pt`)
 
 
+
+## Examples
 <table class="center">
 <tr style="font-weight: bolder;text-align:center;">
   <td width="50%"><b>Original video</b></td>
