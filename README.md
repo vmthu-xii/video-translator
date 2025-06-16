@@ -2,7 +2,6 @@
 
 ## Overview
 This project converts a video spoken in Vietnamese into a video spoken in English, including:
-- Preserving the original visuals (face, expressions).
 - Transcribing and translating the content.
 - Generating English speech with prosody similar to the original.
 - Synchronizing lip movements (lip-sync) so the mouth matches the new audio.
@@ -57,8 +56,9 @@ This project converts a video spoken in Vietnamese into a video spoken in Englis
 ## Examples
 <table class="center">
 <tr style="font-weight: bolder;text-align:center;">
-  <td width="50%"><b>Original video</b></td>
-  <td width="50%"><b>Lip-synced video</b></td>
+  <td width="33%"><b>Original video</b></td>
+  <td width="33%"><b>Lip-synced video</b></td>
+  <td width="33%"><b>Improved video</b></td>
 </tr>
   <tr>
     <td>
@@ -66,13 +66,6 @@ This project converts a video spoken in Vietnamese into a video spoken in Englis
     </td>
     <td>
       <video src=https://github.com/user-attachments/assets/50d9b953-eb11-445d-b955-6af5ef9a3216 controls preload></video>
-    </td>
-  </tr>
-  <tr>
-    <td>
-    </td>
-    <td>
-      <video src=https://github.com/user-attachments/assets/7f6ade35-4eee-4bd0-8283-57c9b69a5cd5 controls preload></video>
     </td>
   </tr>
   <tr>
