@@ -448,6 +448,13 @@ class LipsyncPipeline(DiffusionPipeline):
                         noise_pred = noise_pred_uncond + guidance_scale * (noise_pred_audio - noise_pred_uncond)
                     else:
                         noise_pred_weak = self.unet_weak(unet_input, t, encoder_hidden_states=audio_embeds).sample
+                        
+                        # rescaling
+                        factor = noise_pred_main.std() / noise_pred_weak.std()
+                        rescaling_scale = 0.7  # Giá trị này có thể điều chỉnh
+                        factor = rescaling_scale * factor + (1 - rescaling_scale)
+                        noise_pred_main = noise_pred_main * factor
+
                         noise_pred = noise_pred_main + stg_scale * (noise_pred_main - noise_pred_weak)
 
                     # compute the previous noisy sample x_t -> x_t-1
