@@ -77,7 +77,7 @@ This project converts a video spoken in Vietnamese into a video spoken in Englis
       <video src=https://github.com/user-attachments/assets/e31b9a53-777e-4c81-8758-f7a17a872c28 controls preload></video>
     </td>
     <td>
-      <video src=https://github.com/user-attachments/assets/6cf12785-2d88-41ca-a3af-9b7d41b141db controls preload></video>
+      <video src=https://github.com/user-attachments/assets/1f71ee9c-d094-44ba-b610-17a4f9d16604 controls preload></video>
     </td>
     <td>
       <video src=https://github.com/user-attachments/assets/6f55e20e-1d61-4a7f-838f-829e393e03e0 controls preload></video>
